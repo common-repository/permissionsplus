@@ -1,0 +1,39 @@
+{
+    "name": "digitalbodhi/permissionsplus",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0",
+    "minimum-stability": "dev",
+    "require": {
+        "skyverge/wc-plugin-framework": "^5.10.0",
+        "php" : "^7.2"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.2",
+        "wp-coding-standards/wpcs": "^2.3"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "psr-4": {
+            "DigitalBodhi\\PermissionsPlus\\": "src"
+        }
+    },
+    "scripts" : {
+        "sniff": [
+            "phpcs  -v -s -p --standard=WordPress --extensions=php digitalbodhi-permissionsplus.php includes/"
+        ],
+        "sniff.install": [
+            "phpcs -i"
+        ],
+        "sniff.fix": [
+            "phpcbf -v -s -p --standard=WordPress --extensions=php digitalbodhi-permissionsplus.php includes/"
+        ],
+        "make-pot": [
+            "wp i18n make-pot . languages/digitalbodhi-permissionsplus.pot"
+        ]
+    }
+}
